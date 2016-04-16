@@ -21,35 +21,8 @@ NGINX_DIR=$FAKEROOT/etc/nginx
 NGINX_SITES_AVAILABLE=$NGINX_DIR/sites-available/$PKG_NAME
 NGINX_SITES_ENABLED=$NGINX_DIR/sites-enabled/$PKG_NAME
 NGINX_FILE=$CONFIG_DIR/$PKG_NAME.nginx.conf
-UPSTART_SCRIPT=$CONFIG_DIR$PKG_NAME.upstart
+UPSTART_SCRIPT=$WORKING/conf/$PKG_NAME-upstart.conf
 
-rm -rf $BUILDROOT
-
-mkdir -p $DEPLOY_PATH
-mkdir -p $TMP_DIR
-mkdir -p $DEPLOY_PATH
-mkdir -p $CONFIG_DIR
-mkdir -p $LOG_DIR
-
-if [ ! -d $DEBS ]; then
-  mkdir -p $DEBS
-fi
-
-#Configure $FAKEROOT directories and build jar file
-rm -rf $FAKEROOT
-mkdir -p $FAKEROOT/project
-mkdir -p $NGINX_DIR/before
-
-cp -r app $FAKEROOT/app
-cp -r infrastructure $FAKEROOT/infrastructure
-cp -r conf $FAKEROOT/conf
-
-cp project/plugins.sbt $FAKEROOT/project/plugins.sbt
-cp build.sbt $FAKEROOT/build.sbt
-cd $FAKEROOT
-
-# Create jar
-sbt assembly
 
 #Copy/create build assets
 mv $FAKEROOT/target/scala-2.11/tdfw-assembly-1.0.jar $DEPLOY_PATH/tdfw-assembly-1.0.jar
