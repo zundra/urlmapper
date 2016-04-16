@@ -1,0 +1,16 @@
+@(urlmapping: UrlMapping)(implicit messages: play.api.i18n.Messages, request: RequestHeader)
+
+@main("Turn Down For What!") {
+    <p><a href="/">< Main Page</a></p>
+
+    <p>
+        <label><strong>Original URL</strong></label><br/>
+        @urlmapping.url
+    </p>
+
+    <p>
+        <label><strong>Short URL</strong></label><br/>
+        <a href="http://tdfw.io/@urlmapping.token">http://tdfw.io/@urlmapping.token</a>
+    </p>
+
+}

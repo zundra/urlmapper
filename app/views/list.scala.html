@@ -1,0 +1,18 @@
+@(urlmappings: Seq[UrlMapping])(implicit messages: play.api.i18n.Messages, request: RequestHeader)
+
+@main("UrlMappings") {
+
+<p><a href="/">< Main Page</a></p>
+
+<table>
+    <thead>
+    <tr><th>URL</th><th>Token</th>
+    </thead>
+    <tbody>
+    @for(u <- urlmappings) {
+    <tr><td><a href="/urlmappings/@u.token">@u.url</a></td><td>@u.token</td></tr>
+    }
+    </tbody>
+</table>
+
+}

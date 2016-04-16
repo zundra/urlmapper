@@ -1,0 +1,20 @@
+@(form: Form[UrlField])(implicit messages: play.api.i18n.Messages, request: RequestHeader)
+
+@main("Turn Down For What!") {
+
+@if(form.hasGlobalErrors) {
+<ul>
+    @for(error <- form.globalErrors) {
+    <li>@error.message</li>
+    }
+</ul>
+}
+
+@helper.form(routes.Application.create) {
+<input type="text" id="url" name="url" value="" style="width: 300px;">
+<p><button type="submit">Create Short URL</button></p>
+
+<a href="/urlmappings">List All URLS (Testing Convenience)</a>
+}
+
+}

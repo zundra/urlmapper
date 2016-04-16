@@ -1,0 +1,16 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                               controllers.Application.main
+POST    /                               controllers.Application.create
+
+# UrlMappings
+GET     /urlmappings                    controllers.Application.list
+GET     /urlmappings/:token             controllers.Application.show(token: String)
+
+GET     /:token                         controllers.Application.navigateToUrl(token: String)
+
+# Map static resources from the /public folder to the /assets URL path
+#GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

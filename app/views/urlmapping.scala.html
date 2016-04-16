@@ -1,0 +1,5 @@
+@(record: UrlMapping)
+
+@main(record.url) {
+    UrlMapping: @record.id @record.url @record.token
+}
