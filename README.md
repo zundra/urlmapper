@@ -14,5 +14,9 @@
     1.) Naviate to $PROJECT_ROOT
     2.) sbt assembly
 
+## Building a .deb
+    1.) Naviate to $PROJECT_ROOT
+    2.) debian-packaging/build.sh
+
 ## Usage
     1.) Navigate to http://localhost:9000
