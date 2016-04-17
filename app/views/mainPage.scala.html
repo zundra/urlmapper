@@ -10,11 +10,11 @@
 </ul>
 }
 
-@helper.form(routes.Application.create) {
-<input type="text" id="url" name="url" value="" style="width: 300px;">
-<p><button type="submit">Create Short URL</button></p>
+@helper.form(routes.Application.create, 'class -> "form-inline") {
+<input class="form-control" type="text" id="url" name="url" value="" style="width: 200px;"> <button class="btn btn-default" type="submit">Create URL</button>
 
-<a href="/urlmappings">List All URLS (Testing Convenience)</a>
+
+<p><a href="/urlmappings">List All URLS (Testing Convenience)</a></p>
 }
 
 }

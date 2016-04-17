@@ -10,7 +10,9 @@ POST    /                               controllers.Application.create
 GET     /urlmappings                    controllers.Application.list
 GET     /urlmappings/:token             controllers.Application.show(token: String)
 
-GET     /:token                         controllers.Application.navigateToUrl(token: String)
-
 # Map static resources from the /public folder to the /assets URL path
 GET  /favicon.ico   controllers.Assets.at(path="/public", file="favicon.ico")
+GET  /liljon.jpg   controllers.Assets.at(path="/public", file="liljon.jpg")
+
+GET     /:token                         controllers.Application.navigateToUrl(token: String)
+
