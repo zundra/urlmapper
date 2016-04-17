@@ -21,9 +21,9 @@ NGINX_SITES_ENABLED=$NGINX_DIR/sites-enabled
 UPSTART_SCRIPT=$WORKING/conf/$PKG_NAME
 
 # Start clean
-# rm -rf $DEBS
-# rm -rf $FAKEROOT
-# rm -rf $BUILDROOT
+rm -rf $DEBS
+rm -rf $FAKEROOT
+rm -rf $BUILDROOT
 
 # Create directories used to build
 mkdir -p $DEPLOY_PATH
@@ -35,7 +35,6 @@ mkdir -p $NGINX_SITES_ENABLED
 mkdir -p $DEBS
 
 cp -r $WORKING/conf $CONFIG_DIR
-cp -r $WORKING/public $PUBLIC_DIR
 cp $WORKING/conf/$PKG_NAME.nginx $NGINX_SITES_AVAILABLE/$PKG_NAME
 
 ln -s $NGINX_SITES_AVAILABLE/$PKG_NAME $NGINX_SITES_ENABLED/$PKG_NAME
@@ -75,8 +74,8 @@ fpm \
 mv $DEBS/tdfw_1.0.0-1_amd64.deb $WORKING/tdfw.deb
 
 # End clean
-# rm -rf $DEBS
-# rm -rf $FAKEROOT
-# rm -rf $BUILDROOT
+rm -rf $DEBS
+rm -rf $FAKEROOT
+rm -rf $BUILDROOT
 
 
