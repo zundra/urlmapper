@@ -21,11 +21,43 @@ NGINX_DIR=$FAKEROOT/etc/nginx
 NGINX_SITES_AVAILABLE=$NGINX_DIR/sites-available/$PKG_NAME
 NGINX_SITES_ENABLED=$NGINX_DIR/sites-enabled/$PKG_NAME
 NGINX_FILE=$CONFIG_DIR/$PKG_NAME.nginx.conf
-UPSTART_SCRIPT=$WORKING/conf/$PKG_NAME-upstart.conf
+UPSTART_SCRIPT=$WORKING/conf/$PKG_NAME
 
+rm -rf $BUILDROOT
+
+mkdir -p $DEPLOY_PATH
+mkdir -p $TMP_DIR
+mkdir -p $DEPLOY_PATH
+# mkdir -p $CONFIG_DIR
+mkdir -p $LOG_DIR
+
+if [ ! -d $DEBS ]; then
+  mkdir -p $DEBS
+fi
+
+#Configure $FAKEROOT directories and build jar file
+rm -rf $FAKEROOT
+mkdir -p $FAKEROOT/project
+mkdir -p $NGINX_DIR/before
+
+cp -r $WORKING/app $FAKEROOT/app
+cp -r $WORKING/infrastructure $FAKEROOT/infrastructure
+cp -r $WORKING/conf $FAKEROOT/conf
+cp -r $WORKING/conf $CONFIG_DIR
+cp $WORKING/project/plugins.sbt $FAKEROOT/project/plugins.sbt
+cp $WORKING/build.sbt $FAKEROOT/build.sbt
+cp $WORKING/conf/$PKG_NAME.nginx $NGINX_SITES_ENABLED/$PKG_NAME
+
+ln -s $NGINX_SITES_AVAILABLE/$PKG_NAME $NGINX_SITES_AVAILABLE/$PKG_NAME
+# cp -r $DEPLOY_PATH/conf $FAKEROOT/conf
+
+cd $FAKEROOT
+
+# Create jar
+sbt assembly
 
 #Copy/create build assets
-mv $FAKEROOT/target/scala-2.11/tdfw-assembly-1.0.jar $DEPLOY_PATH/tdfw-assembly-1.0.jar
+mv $FAKEROOT/target/scala-2.11/$PKG_NAME-assembly-1.0.jar $DEPLOY_PATH/$PKG_NAME-assembly-1.0.jar
 
 #Give the build root directory the proper permissions
 chmod -R 755 $BUILDROOT

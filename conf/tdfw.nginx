@@ -1,6 +1,6 @@
 upstream tdfw_http {
-  server 127.0.0.1:9000;
-keepalive 300;
+    server 127.0.0.1:9000;
+    keepalive 300;
 }
 
 server {

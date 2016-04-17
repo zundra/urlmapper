@@ -5,8 +5,8 @@ and local-filesystems
 and runlevel [2345])
 stop on runlevel [!2345]
 
-setuid ubuntu
-setgid ubuntu
+setuid vagrant
+setgid vagrant
 
 respawn
 respawn limit 100 60
@@ -15,7 +15,7 @@ post-stop exec sleep 5
 chdir /opt/tdfw
 
 script
-exec java  -Dconfig.file=/opt/tdfw/config/application.conf \
+exec java  -Dconfig.file=/opt/tdfw/conf/application.conf \
 -Dcom.sun.management.jmxremote.port=8090 \
 -Dcom.sun.management.jmxremote.rmi.port=8090 \
 -Djava.rmi.server.hostname=127.0.0.1 \
