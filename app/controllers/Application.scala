@@ -18,11 +18,8 @@ import scala.concurrent.Await
 class Application @Inject()(val messagesApi: MessagesApi, urlMappingRepo: UrlMappingRepo) extends Controller with I18nSupport {
 
   // GET /
-  def main = Action.async { implicit rs =>
-    urlMappingRepo.all
-      .map{urlmappings =>
-        Ok(views.html.mainPage(Application.createUrlMappingForm))
-      }
+  def main = Action { implicit rs =>
+    Ok(views.html.mainPage(Application.createUrlMappingForm))
   }
 
   // 302 Redirect to original URL

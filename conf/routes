@@ -13,4 +13,4 @@ GET     /urlmappings/:token             controllers.Application.show(token: Stri
 GET     /:token                         controllers.Application.navigateToUrl(token: String)
 
 # Map static resources from the /public folder to the /assets URL path
-#GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET  /favicon.ico   controllers.Assets.at(path="/public", file="favicon.ico")
